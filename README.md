@@ -13,10 +13,10 @@ String
 		* [使用時機](使用時機)
 - [格式化輸出](#格式化輸出)
 	+ [Formatter](#Formatter)
-	+	*[Demo Date](#Demo Date)
+		* [Demo Date](#Demo Date)
 - [正規表示式](#正規表示式)
-- 	+ [撰寫正規表示式](#撰寫正規表示式)
-- 		* [Demo RegularExpression](#Demo RegularExpression)
+	+ [撰寫正規表示式](#撰寫正規表示式)
+		* [Demo RegularExpression](#Demo RegularExpression)
 - [Scanner類別](#Scanner類別)
 	+ [StringTokenizer](#stringyokenizer)
 
