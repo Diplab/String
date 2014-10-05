@@ -11,10 +11,11 @@ String
 	+ [StringBuilder](#stringbuilder)
 		* [StringBuffer](#stringbuffer)
 		* [使用時機](使用時機)
-- [StringTokenizer](#stringyokenizer)
 - [格式化輸出](#格式化輸出)
+	+ [Formatter](#Formatter)
 - [正規表示式](#正規表示式)
-
+- [Scanner類別](#Scanner類別)
+	+ [StringTokenizer](#stringyokenizer)
 
 ## 前言
 字串是一種使用非常頻繁的資料型態。字串可以被視為一連串的字元所組合而成的資料型態。在「String」類別中擁有許多的方法可以被用來處理字串。
@@ -135,7 +136,7 @@ Conversion可以有六種格式化的類型:
 - 百分比(Percent):輸出%型態的資料。
 - 換行符號(Line Separator):輸出換行符號。
 
-![Format1.png](img/Forma1.png)![Format2.png](img/Format2.png)
+![formater1.png](img/formater1.png)![format2.png](img/format2.png)
 
 ```
 public class FormatNumber {
@@ -172,8 +173,117 @@ public class FormatDate {
 }
 ```
 ##正規表示式
+使用時機
+- 想限制使用輸入的格式、長度，例如：輸入身份證字號、電話號碼
+- 為利後續資料的處理，當使用者輸入時即進行資料形式的比對
+- 如果要寫一支程式比對使用者輸入的電子郵件帳號是否符合
+  + 檢查字串中是不是有 『 @ 』符號，且確定其只出現一次
+  + 檢查帳號是不是數字開頭
+ 
+matches() 方法，可協助正規表示式來達到檢查使用者輸入的資料是不是符合系統要求
+
+簡單Demo
+```
+public class InterMatch {
+	public static void main(String[] args) {
+		//描述可能有負號，然後接著一個或多個數字
+		System.out.println("-123".matches("-?\\d+"));
+		System.out.println("456".matches("-?\\d+"));
+		//有+是合理的，但不符合正規表示式
+		System.out.println("+789".matches("-?\\d+"));
+		//必須(-|\\+)的表示法
+		//(-|+)是錯誤的，因為"+"在正規表示式中有特殊定義
+		System.out.println("+789".matches("(-|\\+)?\\d+"));
+	}
+
+}
+```
+###撰寫正規表示式
+提供「正規運算式」來進行字串的比對、選取、編修、檢驗，相關的處理類別是放在「java.util.regex」套件中，只有兩個類別:「Matcher」和「Pattern」。
+- 「Matcher」類別是利用pattern來比對字串
+- 「Pattern」類別用來設定正規運算式
+![pattern.png](img/pattern.png)
+
+如果要建立pattern，需要透過「compiler」方法將字串轉換為pattern。利用該pattern來建立Matcher物件，並可以利用相關的方法來進行資料的比對工作。參考以下的範例：
+
+```
+public class Regular {
+
+	public static void main(String[] args) {
+		 Pattern pat;
+         Matcher mat;
+         Boolean found;
+
+         pat = Pattern.compile("Java");   //建立要比對的pattern
+         mat = pat.matcher("Java");       //pattern要和「Java」字串來比
+         found = mat.matches();           //看pattern是否和「Java」字串完全相同
+
+         if (found)
+                 System.out.println("第一次比對成功");
+         else
+                 System.out.println("第一次比對失敗");
+
+         mat = pat.matcher("Java 2");     //pattern要和「Java 2」字串來比
+         found = mat.matches();           //看pattern是否和「Java 2」字串完全相同
+
+         if (found)
+                 System.out.println("第二次比對成功");
+         else
+                 System.out.println("第二次比對失敗");
+
+         found = mat.find();              //看pattern是否含在「Java 2」字串中
+
+         if (found)
+                 System.out.println("第三次比對成功");
+         else
+                 System.out.println("第三次比對失敗");
+	}
+
+}
+```
+
+![字元比對.png](img/字元比對.png)
+![charater.png](img/charater.png)
+![quantifiers.png](img/quantifiers.png)
+
+Demo RegularExpression
+
+```
+public class RegularExpression {
+
+	public static void main(String[] args) {
+		Scanner scanner = new Scanner(System.in);
+		 
+        String str = "abcdefgabcabc"; 
+        System.out.println(str.replaceAll(".bc", "###")); 
+ 
+        System.out.print("輸入手機號碼: "); 
+        str = scanner.next();
+ 
+        // 簡單格式驗證 
+        if(str.matches("[0-9]{4}-[0-9]{6}")) 
+            System.out.println("格式正確"); 
+        else 
+            System.out.println("格式錯誤");
+ 
+        System.out.print("輸入電子郵件: "); 
+        str = scanner.next();
+ 
+        // 驗證電子郵件格式 
+        if(str.matches(
+        "^[_a-z0-9-]+([.][_a-z0-9-]+)*@[a-z0-9-]+([.][a-z0-9-]+)*$"))
+            System.out.println("格式正確"); 
+        else
+            System.out.println("格式錯誤"); 
+	}
+
+}
+```
+
+
 
 ##Scanner類別
+主用在做格式化的輸入工作。利用Scanner類別中提供的方法，我們可以直接將檔案中的資料讀入，並轉成所需要的資料型態而不用再透過Wrapper Class的轉型。
 - 將掃瞄進來的文字做分割，預設使用空白字元分割
 - 可使用正規運算式，將符合格式的文字當作分割依據
 - 並可搭配hasNext()與next()、nextInt等方法將值取出
