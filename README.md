@@ -50,7 +50,7 @@ public class StringEX {
 		System.out.println(str.startsWith("A"));             //true
 		System.out.println(str.endsWith("dog"));             //true
 		System.out.println(str.toLowerCase());               //a dog
-		System.out.println(str.toUpperCase());               //ADOG
+		System.out.println(str.toUpperCase());               //A DOG
 		System.out.println(str);                             //A dog 
 	}
 
@@ -159,7 +159,7 @@ public class FormatNumber {
 
 ####Demo Date
 
-當程式中使用「t」或是「T」來顯示日期或時間的格式時，我們還必需要設定實際格式的顯示方式。「t」或是「T」只是前導字元，1u4vm 
+當程式中使用「t」或是「T」來顯示日期或時間的格式時，我們還必需要設定實際格式的顯示方式。「t」或是「T」只是前導字元，必須 
 加上日期或時間專屬的conversion字元。
 ```
 public class FormatDate {
