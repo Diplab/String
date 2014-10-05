@@ -13,7 +13,10 @@ String
 		* [使用時機](使用時機)
 - [格式化輸出](#格式化輸出)
 	+ [Formatter](#Formatter)
+	+	*[Demo Date](#Demo Date)
 - [正規表示式](#正規表示式)
+- 	+ [撰寫正規表示式](#撰寫正規表示式)
+- 		* [Demo RegularExpression](#Demo RegularExpression)
 - [Scanner類別](#Scanner類別)
 	+ [StringTokenizer](#stringyokenizer)
 
@@ -124,7 +127,7 @@ public class SimpleFormat {
 語法中「%」和「conversion」這兩部份是必要的參數。Conversion使用一個字元來
 表示，用來指定資料型態。
 
-Conversion可以有六種格式化的類型:
+Conversion六種格式化類型:
 - 一般(General):可以用來輸出任何的資料型態。
 - 字元(Charaster):可用來輸出char、Charaster、Byte、short、Short等類型的資料。        
   但也可以利用使用「Charaster.isValidCodepoint(int)」方法來輸出int或是lnteger   
@@ -154,7 +157,7 @@ public class FormatNumber {
 }
 ```
 
-Demo Date
+####Demo Date
 
 當程式中使用「t」或是「T」來顯示日期或時間的格式時，我們還必需要設定實際格式的顯示方式。「t」或是「T」只是前導字元，1u4vm 
 加上日期或時間專屬的conversion字元。
@@ -246,7 +249,7 @@ public class Regular {
 ![charater.png](img/charater.png)
 ![quantifiers.png](img/quantifiers.png)
 
-Demo RegularExpression
+####Demo RegularExpression
 
 ```
 public class RegularExpression {
@@ -287,7 +290,22 @@ public class RegularExpression {
 - 將掃瞄進來的文字做分割，預設使用空白字元分割
 - 可使用正規運算式，將符合格式的文字當作分割依據
 - 並可搭配hasNext()與next()、nextInt等方法將值取出
+- 
+```
+public class ScannerEx {
 
+	public static void main(String[] args) {
+		String str = "1,3,5,7,9";
+		Scanner scan = new Scanner(str);
+		scan.useDelimiter("\\s*,\\s*");
+		while(scan.hasNextInt()) //判斷是否有下個字符
+		System.out.println(scan.nextInt());
+	
+		
+	}
+
+}
+```
 
 ###StringTokenizer
 - 可以將一個長字串分解成多個子字串
