@@ -289,8 +289,8 @@ public class RegularExpression {
 主用在做格式化的輸入工作。利用Scanner類別中提供的方法，我們可以直接將檔案中的資料讀入，並轉成所需要的資料型態而不用再透過Wrapper Class的轉型。
 - 將掃瞄進來的文字做分割，預設使用空白字元分割
 - 可使用正規運算式，將符合格式的文字當作分割依據
-- 並可搭配hasNext()與next()、nextInt等方法將值取出
-- 
+- 可搭配hasNext()與next()、nextInt等方法將值取出
+
 ```
 public class ScannerEx {
 
