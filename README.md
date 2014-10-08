@@ -33,7 +33,7 @@ String
 由於String使用上得頻繁，請自行瀏覽SDK文件中關於「java.lang」套件的String類別的相關方法，常用的方法有：
 ![String.png](img/string.png)
 
-```
+```java
 public class StringEX {
 
 	
@@ -65,7 +65,7 @@ public class StringEX {
 - 文字的串接必須要用append() 或 insert() 方法
 - 減少垃圾量，提高效能
 
-```
+```java
 public class StringBuilderEx {
 
 	public static void main(String[] args) {
@@ -100,7 +100,7 @@ StringBuilder 與 StringBuffer 的使用時機
 ##格式化輸出
 簡單Demo格式化輸出差別
 
-```
+```java
 public class SimpleFormat {
 	
 	public static void main(String[] args) {
@@ -141,7 +141,7 @@ Conversion六種格式化類型:
 
 ![formater1.png](img/formater1.png)![format2.png](img/format2.png)
 
-```
+```java
 public class FormatNumber {
 	public static void main(String[] args) {
 		StringBuilder sb = new StringBuilder();
@@ -161,7 +161,7 @@ public class FormatNumber {
 
 當程式中使用「t」或是「T」來顯示日期或時間的格式時，我們還必需要設定實際格式的顯示方式。「t」或是「T」只是前導字元，必須 
 加上日期或時間專屬的conversion字元。
-```
+```java
 public class FormatDate {
 
 	public static void main(String[] args) {
@@ -186,7 +186,7 @@ public class FormatDate {
 matches() 方法，可協助正規表示式來達到檢查使用者輸入的資料是不是符合系統要求
 
 簡單Demo
-```
+```java
 public class InterMatch {
 	public static void main(String[] args) {
 		//描述可能有負號，然後接著一個或多個數字
@@ -209,7 +209,7 @@ public class InterMatch {
 
 如果要建立pattern，需要透過「compiler」方法將字串轉換為pattern。利用該pattern來建立Matcher物件，並可以利用相關的方法來進行資料的比對工作。參考以下的範例：
 
-```
+```java
 public class Regular {
 
 	public static void main(String[] args) {
@@ -251,7 +251,7 @@ public class Regular {
 
 ####Demo RegularExpression
 
-```
+```java
 public class RegularExpression {
 
 	public static void main(String[] args) {
@@ -291,7 +291,7 @@ public class RegularExpression {
 - 可使用正規運算式，將符合格式的文字當作分割依據
 - 可搭配hasNext()與next()、nextInt等方法將值取出
 
-```
+```java
 public class ScannerEx {
 
 	public static void main(String[] args) {
